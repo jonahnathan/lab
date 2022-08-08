@@ -1,27 +1,28 @@
 class Television:
+    """
+    A class representing actions to operate a Television (typically with a remote)
+    """
     MIN_CHANNEL = 0     # Minimum TV channel
     MAX_CHANNEL = 3     # Maximum TV channel
 
     MIN_VOLUME = 0      # Minimum TV volume
     MAX_VOLUME = 2      # Maximum TV volume
 
-    def __init__(self):
+    def __init__(self, channel: int, volume: int, isOn ) -> None:
         """
-        - Create a private variable to store the TV channel. It should be set to the minimum TV channel by default.
-        - Create a private variable to store the TV volume. It should be set to the minimum TV volume by default.
-        - Create a private variable to store the TV status. The TV should start when it is off.
+        Constructor to create initial state of a television object. 
+        :param channel: Channel displaying on television
+        :param volume: Volume of television
+        :param isOn: Status of television (on/off)
         """
         self.__channel = Television.MIN_CHANNEL
         self.__volume = Television.MIN_VOLUME
         self.__isOn = False
 
 
-
-    def power(self):
+    def power(self) -> None:
         """
-        - This method should be used to turn the TV on/off.
-        - If called on a TV object that is off, the TV object should be turned on.
-        - If called on a TV object that is on, the TV object should be turned off.
+        Method to turn the TV on/off.
         """
         if not self.__isOn:
             self.__isOn = True
@@ -29,11 +30,9 @@ class Television:
             self.__isOn = False
 
 
-    def channel_up(self):
+    def channel_up(self) -> None:
         """
-        - This method should be used to adjust the TV channel by incrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MAX_CHANNEL, it should take the TV channel back to the MIN_CHANNEL.
+        Method to adjust the TV channel by incrementing its value.
         """
         if self.__isOn:
             if self.__channel == Television.MAX_CHANNEL:
@@ -41,11 +40,10 @@ class Television:
             else:
                 self.__channel += 1
 
-    def channel_down(self):
+
+    def channel_down(self) -> None:
         """
-        - This method should be used to adjust the TV channel by decrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MIN_CHANNEL, it should take the TV channel back to the MAX_CHANNEL.
+        Method to adjust the TV channel by decrementing its value.
         """
         if self.__isOn:
             if self.__channel == Television.MIN_CHANNEL:
@@ -53,11 +51,10 @@ class Television:
             else:
                 self.__channel -= 1
 
-    def volume_up(self):
+
+    def volume_up(self) -> None:
         """
-        - This method should be used to adjust the TV volume by incrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MAX_VOLUME, the volume should not be adjusted.
+        Method to adjust the TV volume by incrementing its value.
         """
         if self.__isOn:
             if self.__volume == Television.MAX_VOLUME:
@@ -65,11 +62,10 @@ class Television:
             else:
                 self.__volume += 1
 
-    def volume_down(self):
+
+    def volume_down(self) -> None:
         """
-        - This method should be used to adjust the TV volume by decrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MIN_VOLUME, the volume should not be adjusted.
+        Method to adjust the TV volume by decrementing its value.
         """
         if self.__isOn:
             if self.__volume == Television.MIN_VOLUME:
@@ -77,8 +73,9 @@ class Television:
             else:
                 self.__volume -= 1
 
-    def __str__(self):
+
+    def __str__(self) -> str:
         """
-        - This method should be used to return the TV status using the format shown in the comments of Labmain.py
+        Method to return the TV status using the format shown in the comments of Labmain.py.
         """
         return f'TV status: Is on = {self.__isOn}, Channel = {self.__channel}, Volume = {self.__volume}'
