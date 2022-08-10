@@ -74,5 +74,6 @@ class Television:
     def __str__(self) -> str:
         """
         Method to return the TV status using the format shown in the comments of Labmain.py.
+        :return: statement including current TV status, channel, and volume
         """
         return f'TV status: Is on = {self.__isOn}, Channel = {self.__channel}, Volume = {self.__volume}'
